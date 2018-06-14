@@ -1,0 +1,13 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server-1", "category": "JS" },
+    { "id": 2, "title": "json-server-2", "category": "JSX" },
+    { "id": 3, "title": "json-server-3", "category": "middleware" },
+    { "id": 4, "title": "json-server-4", "category": "mapStateToProps" },
+    { "id": 5, "title": "json-server-5", "category": "mapDispatchToProps" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}
