@@ -23,3 +23,29 @@ body {
 .d-block {
 	display: block;
 }
+
+.toaster-container {
+  position: fixed;
+  right: 10px;
+  bottom:0;
+}
+
+.toaster {
+  width: 180px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: #FFF;
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.success {
+  background:rgba(77,173,77,0.8);
+}
+
+.failure {
+  background:rgba(224,84,84,0.7);
+}

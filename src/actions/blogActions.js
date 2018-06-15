@@ -10,6 +10,19 @@ const blogDetailShowLoading = () => {
 const commentsShowLoading = () => {
   return {
     type : 'COMMENTS_SHOW_LOADING'
+
+
+const API_BASE_URL = 'http://localhost:3004';
+
+const blogShowLoading = () => {
+  return {
+    type : BLOG_DETAIL_SHOW_LOADING
+  }
+}
+
+const commentsShowLoading = () => {
+  return {
+    type : COMMENTS_SHOW_LOADING
   }
 }
 const getAllPosts = (data) => {
@@ -28,7 +41,7 @@ const showLoading = (data) => {
 
 export const getAllBlogs = () => {
   return (dispatch) => {
-    dispatch(showLoading());
+    //dispatch(blogShowLoading());
     request
      .get(`${API_BASE_URL}/posts`)
      .then(function(res) {
@@ -105,5 +118,41 @@ export const getComments = (id) => {
   }
 }
 
+const storeBlog = (data) => {
+  return {
+    type : 'SAVE_BLOG',
+  }
+}
 
+export const saveBlog = (data) => {
+  return (dispatch) => {
+    //dispatch(blogShowLoading());
+    request
+     .post(`${API_BASE_URL}/posts`)
+     .set({
+       'Content-Type':'application/json'
+     })
+     .send(data)
+     .then(function(res) {
+        dispatch(storeBlog(res.body))
+     });
+  }
+}
 
+export const showToast = (data) => {
+  console.log("data ", data);
+  console.log('type ', typeof data.interval);
+  let interval = 30000;
+  return (dispatch) => {
+    dispatch({
+      type:'ADD_TOAST',
+      data
+    });
+    window.setTimeout(()=>{
+      dispatch({
+        type:'DELETE_TOAST',
+        id:data.id
+      });
+    },3000)
+  }
+}

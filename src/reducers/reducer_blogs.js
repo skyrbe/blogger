@@ -16,13 +16,18 @@ const reducer = (state = initialState, action) => {
         data : state.data.concat(action.data)
       }
     case "REMOVE_ALL_BLOGS":
-    return{
-      ...state,
-        loading : false,
-        data : []
-    }
+      return{
+        ...state,
+          loading : false,
+          data : []
+      }
+    case "SAVE_BLOG":
+      return {
+        ...state,
+        loading : false
+      }
     default:
-    console.log('Reducer blog',state);
+      console.log('Reducer blog',state);
       return state;
   }
 
