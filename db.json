@@ -175,6 +175,11 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
+    },
+    {
+      "body": "test\n",
+      "postId": 1,
+      "id": 2
     }
   ],
   "profile": {

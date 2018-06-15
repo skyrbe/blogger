@@ -1,5 +1,6 @@
 import request from 'superagent';
-import {COMMENTS_SHOW_LOADING,BLOG_DETAIL_SHOW_LOADING} from './actionTypes'
+import {COMMENTS_SHOW_LOADING,BLOG_DETAIL_SHOW_LOADING} from './actionTypes';
+
 const API_BASE_URL = 'http://localhost:3004';
 
 const blogDetailShowLoading = () => {
@@ -10,9 +11,8 @@ const blogDetailShowLoading = () => {
 const commentsShowLoading = () => {
   return {
     type : 'COMMENTS_SHOW_LOADING'
-
-
-const API_BASE_URL = 'http://localhost:3004';
+  }
+}
 
 const blogShowLoading = () => {
   return {
@@ -20,11 +20,6 @@ const blogShowLoading = () => {
   }
 }
 
-const commentsShowLoading = () => {
-  return {
-    type : COMMENTS_SHOW_LOADING
-  }
-}
 const getAllPosts = (data) => {
   return {
     type : 'GET_ALL_POSTS',
