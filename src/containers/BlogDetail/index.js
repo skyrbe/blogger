@@ -12,13 +12,14 @@ class BlogDetail extends Component {
     }
 
     componentDidMount() {
+        console.log('componentDidMount',this.props);
       this.props.getBlogDetail(this.props.match.params.id)
     }
 
     render() {
-        console.log("props ", this.props);
+        console.log("props BlogDetail ", this.props);
         return (
-            <div className="class-name">
+            <div className="col-md-12">
                 {this.props.isLoading && <span>Loading!!</span>}
                 {!this.props.isLoading && this.props.blogDetail && <Detail blogDetail = {this.props.blogDetail} />}
             </div>

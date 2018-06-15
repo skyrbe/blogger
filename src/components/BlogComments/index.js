@@ -12,7 +12,7 @@ export default class BlogComments extends Component {
 
     render() {
         return (
-            <div className="class-name">
+            <div className="list-group">
                 {this.createCommentList(this.props.comments)}
             </div>
         );

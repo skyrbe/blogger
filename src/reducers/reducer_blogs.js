@@ -15,9 +15,17 @@ const reducer = (state = initialState, action) => {
         loading : false,
         data : state.data.concat(action.data)
       }
+    case "REMOVE_ALL_BLOGS":
+    return{
+      ...state,
+        loading : false,
+        data : []
+    }
     default:
+    console.log('Reducer blog',state);
       return state;
   }
+
 }
 
 export default reducer;

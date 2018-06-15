@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import BlogItem from '../../components/BlogItem';
 
-import { getAllBlogs } from '../../actions/blogActions'
+import { getAllBlogs,removeAllBlogs } from '../../actions/blogActions'
 
 class BlogList extends Component {
 
   componentDidMount() {
+      this.props.removeAllBlogs();
       this.props.getAllBlogs();
   }
 
   renderList = (blogs) => {
     return blogs.map(blog => {
       return (
-        <BlogItem blog = {blog} />
+        <BlogItem key= {blog.id} blog = {blog} />
       );
     })
   }
@@ -40,7 +41,7 @@ function mapStateToProps({blogList}) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getAllBlogs
+    getAllBlogs,removeAllBlogs
   },dispatch);
 }
 

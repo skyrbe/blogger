@@ -2,7 +2,7 @@ import React from 'react';
 
  const BlogCommentDetail = (props) => {
    return (
-       <div className="class-name">
+       <div className="list-group-item">
            <span>{props.comment.body}</span>
        </div>
    );

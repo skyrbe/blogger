@@ -2,10 +2,39 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import BlogCommentsComponent from '../../components/BlogComments';
-import {getComments,removeAllComments} from '../../actions/blogActions';
+import AddComment from '../../components/AddComment'
+import {getComments,removeAllComments,saveComments} from '../../actions/blogActions';
 
 class BlogComments extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      commentData:''
+    }
+    this.saveCommentToDB=this.saveCommentToDB.bind(this);
+    this.handleInputEvent=this.handleInputEvent.bind(this);
+  }
+  saveCommentToDB(){
+    let jsonData={        
+        "body":this.state.commentData,
+        "postId":this.props.id,
+      } 
+    
+    this.props.saveComments(jsonData);
+    this.setState({
+      commentData:''
+    });
+    //removeAllComments();
 
+  }
+  handleInputEvent(e){
+    
+    this.setState(
+      {
+        commentData:e.target.value
+      }
+    );
+  }
     componentDidMount() {
       this.props.removeAllComments();
       this.props.getComments(this.props.id);
@@ -17,6 +46,10 @@ class BlogComments extends Component {
         return (
             <div className="class-name">
                 <BlogCommentsComponent comments = {comments}/>
+                <AddComment comments={comments} 
+                commentText={this.state.commentData} 
+                handleInputEvent={this.handleInputEvent} 
+                saveCommentsData={this.saveCommentToDB}/>
             </div>
         );
     }
@@ -32,7 +65,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
       getComments,
-      removeAllComments
+      removeAllComments,
+      saveComments
     },dispatch);
 }
 
